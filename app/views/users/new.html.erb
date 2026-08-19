@@ -1,13 +1,9 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-<form action="/users" method="post" accept-charset="UTF-8" data-turbo="false">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="user[email]">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="user[username]">
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="user[password]">
-    <button type="submit">Submit</button>
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-</form>
+<%= form_with model: @user, data: { turbo: false } do |form| %>
+  <%= form.label :username, "Your user name here"%>
+  <%= form.text_field :username %>
+  <%= form.label :email, "Email"%>
+  <%= form.email_field :email, placeholder:"example@example.com"%>
+  <%= form.label :password, "Password"%>
+  <%= form.password_field :password %>
+  <%= form.submit "Create" %> 
+<% end %>
